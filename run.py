@@ -42,7 +42,7 @@ for dir in dirs:
         
 print("Grabbing drivers/net/wireless/mediatek/mt7601u...")
 
-move = exec_cmd("mv kernel/drivers/net/wireless/mediatek/mt7601u/* .")
+move = exec_cmd("mv kernel/drivers/net/wireless/mediatek/mt7601u .")
 
 wd = os.getcwd()
 os.chdir("./mt7601u")
@@ -60,9 +60,25 @@ with open("phy.c", "w") as phy_c:
 print("Make-ing driver")
 make = subprocess.check_output("make -C /lib/modules/$(uname -r)/build M=$(pwd) modules", shell=True, universal_newlines=True)
 
+print("Updating driver")
+
 rmmod = exec_cmd("rmmod mt7601u")
 insmod = exec_cmd("insmod ./mt7601u.ko")
 
+
+modinfo = exec_cmd("modinfo mt7601u")
+temp_filename = modinfo.split("\n")[0]
+filename = temp_filename[temp_filename.index("/"):]
+
+print("Replacing "+filename+" with local module")
+
+move_last = exec_cmd("mv ./mt7601u.ko "+filename)
+
 os.chdir(wd)
 
+print("Cleaning dir...")
 
+rm_kernel = exec_cmd("rm -r -f ./kernel")
+rm_tar = exec_cmd("rm -r -f kernel.tar.xz")
+
+print("Good to go")

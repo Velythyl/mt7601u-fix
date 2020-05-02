@@ -1,0 +1,1 @@
+cmd_/home/charlie/mt7601u/mt7601u-fix/mt7601u/mt7601u.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000  --build-id  -T ./scripts/module-common.lds -o /home/charlie/mt7601u/mt7601u-fix/mt7601u/mt7601u.ko /home/charlie/mt7601u/mt7601u-fix/mt7601u/mt7601u.o /home/charlie/mt7601u/mt7601u-fix/mt7601u/mt7601u.mod.o;  true

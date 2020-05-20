@@ -1,4 +1,30 @@
 import subprocess
+import os
+import shutil
+
+print("Cleaing...")
+
+for folder in os.listdir():
+    if folder.startswith(".git") or folder.startswith("run.py") or folder.startswith("mt7601u") or folder.startswith("README"):
+        pass
+    else:
+        try:
+            shutil.rmtree("./"+folder)
+        except:
+            try:
+                os.remove("./"+folder)
+            except:
+                pass
+            
+try:
+    shutil.rmtree("./mt7601u_dup")
+except:
+    pass
+
+try:
+    os.rename("./mt7601u", "./mt7601u_dup")
+except:
+    pass
 
 def exec_cmd(cmd):
     return subprocess.check_output(cmd.split(" "), universal_newlines=True)

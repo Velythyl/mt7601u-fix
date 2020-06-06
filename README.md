@@ -3,6 +3,11 @@ Fuck Realtek
 
 https://github.com/kuba-moo/mt7601u/issues/64
 
+This fixes the driver issues for mt7601u. This assumes you have another way to connect to the internet (probably temporarily) to download the linux kernel and then apply the fix to the module.
+
+TODO list:
+- Allow users to indicate the kernel is already in the working directory (probably imported from an usb key, and downloaded on another computer) in case the user doesn't have an internet connection working at all.
+
 <pre>
 
 The solution described here worked for me in Ubuntu 16.04 and 18.04:

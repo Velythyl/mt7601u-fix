@@ -1,5 +1,5 @@
 # mt7601u-fix
-Fuck Realtek
+Come on, Realtek, do better
 
 https://github.com/kuba-moo/mt7601u/issues/64
 
